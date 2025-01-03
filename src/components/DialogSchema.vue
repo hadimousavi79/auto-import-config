@@ -27,7 +27,6 @@ const showDialog = defineModel<boolean>('show', { default: false, required: true
       <DialogHeader>
         <DialogTitle>Schema link</DialogTitle>
         <DialogDescription>Copy schema url and share</DialogDescription>
-        {{ url }}
       </DialogHeader>
       <div class="flex items-center space-x-2">
         <div class="grid flex-1 gap-2" :key="url">
