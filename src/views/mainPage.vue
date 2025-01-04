@@ -15,7 +15,7 @@ const url = computed(() => {
   if (!route.query.url) return null
   const generatedUrl = (route.query.url as string).split('?')[0]
   if (isAndroid()) {
-    return `v2rayng://install-sub?url=${encodeURIComponent(`${generatedUrl}?custom=2#DemonAccess`)}`
+    return `v2rayng://install-sub?url=${generatedUrl}?custom=2#DemonAccess`
   } else if (isIOS()) {
     return `streisand://import/${generatedUrl}?custom=2&amp;#DemonAccess`
   }
@@ -53,6 +53,14 @@ const url = computed(() => {
               در اندروید از v2rayng
               <br />
               در IOS آیفون از streisand استفاده کنید
+            </AlertDescription>
+          </Alert>
+          <Alert class="mb-5" variant="destructive">
+            <AlertCircle class="w-4 h-4" />
+            <AlertTitle style="direction: rtl">توجه</AlertTitle>
+            <AlertDescription class="text-right" style="direction: rtl">
+              در صورتی که بعد از زدن دکمه ی زیر کانفیگ هارا مشاهده نکردید لطفا در برنامه گزینه ی
+              بروزرسانی اشتراک (update current group subscription) را بزنید
             </AlertDescription>
           </Alert>
 
