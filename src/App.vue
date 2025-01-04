@@ -38,7 +38,7 @@ const generateUrlSchema = () => {
   if (form.value.app === 'v2rayng') {
     generatedSchema.value = `v2rayng://install-sub?url=${encodeURIComponent(`${generatedUrl}?custom=2#DemonAccess`)}&name=DemonAccess`
     showDialog.value = true
-  } else if (form.value.app === 'sterisand') {
+  } else if (form.value.app === 'streisand') {
     generatedSchema.value = `streisand://import/${generatedUrl}?custom=2&amp;#DemonAccess`
     showDialog.value = true
   }
@@ -73,7 +73,7 @@ const generateUrlSchema = () => {
             <SelectContent>
               <SelectGroup>
                 <SelectItem value="v2rayng"> V2rayNG </SelectItem>
-                <SelectItem value="sterisand"> Sterisand </SelectItem>
+                <SelectItem value="streisand"> Streisand </SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
