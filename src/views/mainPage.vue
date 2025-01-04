@@ -14,7 +14,7 @@ const { isAndroid, isIOS } = useDeviceDetection()
 const url = computed(() => {
   if (!route.query.url) return null
   const generatedUrl = (route.query.url as string).split('?')[0]
-  if (!isAndroid()) {
+  if (isAndroid()) {
     return `v2rayng://install-sub?url=${encodeURIComponent(`${generatedUrl}?custom=2#DemonAccess`)}&name=DemonAccess`
   } else if (isIOS()) {
     return `streisand://import/${generatedUrl}?custom=2&amp;#DemonAccess`
@@ -27,19 +27,37 @@ const url = computed(() => {
   <div class="flex items-center justify-center w-full h-screen">
     <Card v-if="route.query.url" class="w-full max-w-sm">
       <CardHeader>
-        <!-- {{ route.query.url }} -->
         <CardTitle class="text-2xl"> Deamon access </CardTitle>
-        <CardDescription> auto import config </CardDescription>
       </CardHeader>
       <CardContent class="grid gap-4">
         <Alert v-if="!isAndroid() && !isIOS()" variant="destructive">
           <AlertCircle class="w-4 h-4" />
-          <AlertTitle>Error</AlertTitle>
-          <AlertDescription> Please use android or IOS </AlertDescription>
+          <AlertTitle>توجه</AlertTitle>
+          <AlertDescription class="text-right" style="direction: rtl">
+            لطفا در گوشی یا تبلت این صفحه را باز کنید
+          </AlertDescription>
         </Alert>
         <div v-else>
-          <a :href="url!">
-            <Button class="w-full">واردسازی خودکار</Button>
+          <Alert class="mb-5" variant="info">
+            <AlertCircle class="w-4 h-4" />
+            <AlertTitle>توجه</AlertTitle>
+            <AlertDescription class="text-right" style="direction: rtl">
+              لطفا <span class="font-bold">فقط</span> به کانفیگ های دارای پرچم متصل
+              بشوید</AlertDescription
+            >
+          </Alert>
+          <Alert class="mb-5" variant="warning">
+            <AlertCircle class="w-4 h-4" />
+            <AlertTitle>توجه</AlertTitle>
+            <AlertDescription class="text-right" style="direction: rtl">
+              در اندروید از v2rayng
+              <br />
+              در IOS آیفون از streisand استفاده کنید
+            </AlertDescription>
+          </Alert>
+
+          <a class="mt-5" :href="url!">
+            <Button class="w-full">واردسازی خودکار </Button>
           </a>
         </div>
       </CardContent>
