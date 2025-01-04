@@ -32,7 +32,7 @@ const url = computed(() => {
       <CardContent class="grid gap-4">
         <Alert v-if="!isAndroid() && !isIOS()" variant="destructive">
           <AlertCircle class="w-4 h-4" />
-          <AlertTitle>توجه</AlertTitle>
+          <AlertTitle style="direction: rtl">توجه</AlertTitle>
           <AlertDescription class="text-right" style="direction: rtl">
             لطفا در گوشی یا تبلت این صفحه را باز کنید
           </AlertDescription>
@@ -40,7 +40,7 @@ const url = computed(() => {
         <div v-else>
           <Alert class="mb-5" variant="info">
             <AlertCircle class="w-4 h-4" />
-            <AlertTitle>توجه</AlertTitle>
+            <AlertTitle style="direction: rtl">توجه</AlertTitle>
             <AlertDescription class="text-right" style="direction: rtl">
               لطفا <span class="font-bold">فقط</span> به کانفیگ های دارای پرچم متصل
               بشوید</AlertDescription
@@ -48,7 +48,7 @@ const url = computed(() => {
           </Alert>
           <Alert class="mb-5" variant="warning">
             <AlertCircle class="w-4 h-4" />
-            <AlertTitle>توجه</AlertTitle>
+            <AlertTitle style="direction: rtl">توجه</AlertTitle>
             <AlertDescription class="text-right" style="direction: rtl">
               در اندروید از v2rayng
               <br />
