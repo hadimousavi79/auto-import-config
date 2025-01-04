@@ -15,9 +15,9 @@ const url = computed(() => {
   if (!route.query.url) return null
   const generatedUrl = (route.query.url as string).split('?')[0]
   if (isAndroid()) {
-    return `v2rayng://install-sub?url=${generatedUrl}?custom=2#DemonAccess`
+    return `v2rayng://install-sub?url=${generatedUrl}?custom=2#Deamon`
   } else if (isIOS()) {
-    return `streisand://import/${generatedUrl}?custom=2&amp;#DemonAccess`
+    return `streisand://import/${generatedUrl}?custom=2&amp;#Deamon`
   }
   return null
 })
