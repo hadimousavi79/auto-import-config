@@ -15,7 +15,8 @@ const url = computed(() => {
   if (!route.query.url) return null
   const generatedUrl = (route.query.url as string).split('?')[0]
   if (isAndroid()) {
-    return `v2rayng://install-config?url=${generatedUrl}?custom=2#Deamon`
+    // return `v2rayng://install-config?url=${generatedUrl}?custom=2#Deamon`
+    return `v2rayng://install-config?url=${encodeURIComponent(`${generatedUrl}?custom=2#Demon2`)}`
   } else if (isIOS()) {
     return `streisand://import/${generatedUrl}?custom=2&amp;#Deamon`
   }
