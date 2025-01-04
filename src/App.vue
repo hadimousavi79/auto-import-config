@@ -36,7 +36,7 @@ const generateUrlSchema = () => {
   error.value = ''
   const generatedUrl = form.value.link.split('?')[0]
   if (form.value.app === 'v2rayng') {
-    generatedSchema.value = `v2rayng://install-sub?url=${encodeURIComponent(`${generatedUrl}?custom=2#DeamonAccess`)}&name=DeamonAccess`
+    generatedSchema.value = `v2rayng://install-sub?url=${encodeURIComponent(`${generatedUrl}?custom=2#DemonAccess`)}&name=DemonAccess`
     showDialog.value = true
   } else if (form.value.app === 'sterisand') {
     generatedSchema.value = `streisand://import/${generatedUrl}?custom=2&amp;#DemonAccess`
