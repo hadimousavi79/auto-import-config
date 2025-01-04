@@ -29,7 +29,7 @@ const showDialog = defineModel<boolean>('show', { default: false, required: true
         <DialogDescription>Copy schema url and share</DialogDescription>
       </DialogHeader>
       <div class="flex items-center space-x-2">
-        <div class="grid flex-1 gap-2" :key="url">
+        <div class="grid flex-1 gap-2">
           <Label for="schema" class="sr-only"> Schema </Label>
           <input
             class="flex w-full h-10 px-3 py-2 text-sm border rounded-md border-input bg-background ring-offset-background"
