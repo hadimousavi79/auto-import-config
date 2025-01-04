@@ -2,7 +2,7 @@
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { AlertCircle } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useDeviceDetection } from '@/composables/useDeviceDetection'
@@ -15,7 +15,6 @@ const url = computed(() => {
   if (!route.query.url) return null
   const generatedUrl = (route.query.url as string).split('?')[0]
   if (isAndroid()) {
-    // return `v2rayng://install-config?url=${generatedUrl}?custom=2#Deamon`
     return `v2rayng://install-config?url=${encodeURIComponent(`${generatedUrl}?custom=2#Demon2`)}`
   } else if (isIOS()) {
     return `streisand://import/${generatedUrl}?custom=2&amp;#Deamon`
