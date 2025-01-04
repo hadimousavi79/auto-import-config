@@ -10,38 +10,26 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { ref } from 'vue'
 import DialogSchema from '@/components/DialogSchema.vue'
 
-const form = ref({ link: '', app: 'v2rayng' })
+const form = ref({ link: '' })
 const error = ref('')
 const generatedSchema = ref<string>('')
 const showDialog = ref(false)
 
 const generateUrlSchema = () => {
-  if (!form.value.link) {
+  const generatedUrl = form.value.link
+  if (!generatedUrl) {
     return (error.value = 'Please fill input correctly')
   }
 
   error.value = ''
-  const generatedUrl = form.value.link.split('?')[0]
-  if (form.value.app === 'v2rayng') {
-    generatedSchema.value = `v2rayng://install-sub?url=${encodeURIComponent(`${generatedUrl}?custom=2#DemonAccess`)}&name=DemonAccess`
-    showDialog.value = true
-  } else if (form.value.app === 'streisand') {
-    generatedSchema.value = `streisand://import/${generatedUrl}?custom=2&amp;#DemonAccess`
-    showDialog.value = true
-  }
+
+  generatedSchema.value = `${window.location.origin}/?url=${generatedUrl}`
+  showDialog.value = true
 }
 </script>
 
@@ -63,20 +51,6 @@ const generateUrlSchema = () => {
         <div class="grid gap-2">
           <Label for="subscription link">Subscription link</Label>
           <Input v-model="form.link" id="subscription link" type="string" required />
-        </div>
-        <div class="grid gap-2">
-          <Label for="app">App </Label>
-          <Select id="app" v-model="form.app" required>
-            <SelectTrigger>
-              <SelectValue placeholder="Select a fruit" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectItem value="v2rayng"> V2rayNG </SelectItem>
-                <SelectItem value="streisand"> Streisand </SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
         </div>
       </CardContent>
       <CardFooter>
