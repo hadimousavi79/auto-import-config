@@ -9,7 +9,7 @@ import { useDeviceDetection } from '@/composables/useDeviceDetection'
 
 const route = useRoute()
 
-const { isAndroid, isIOS } = useDeviceDetection()
+const { isAndroid, isIOS, isMobile } = useDeviceDetection()
 
 const url = computed(() => {
   if (!route.query.url) return null
@@ -30,7 +30,7 @@ const url = computed(() => {
         <CardTitle class="text-2xl"> Deamon access </CardTitle>
       </CardHeader>
       <CardContent class="grid gap-4">
-        <Alert v-if="!isAndroid() && !isIOS()" variant="destructive">
+        <Alert v-if="!isMobile()" variant="destructive">
           <AlertCircle class="w-4 h-4" />
           <AlertTitle style="direction: rtl">توجه</AlertTitle>
           <AlertDescription class="text-right" style="direction: rtl">
