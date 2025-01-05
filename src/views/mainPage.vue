@@ -5,18 +5,19 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useDeviceDetection } from '@/composables/useDeviceDetection'
+//@ts-expect-error  // ignore this line
+import { useDevice } from 'next-vue-device-detector'
 
 const route = useRoute()
 
-const { isAndroid, isIOS, isMobile } = useDeviceDetection()
+const d = useDevice()
 
 const url = computed(() => {
   if (!route.query.url) return null
   const generatedUrl = (route.query.url as string).split('?')[0]
-  if (isAndroid()) {
+  if (d.mobile && d.android) {
     return `v2rayng://install-config/?url=${encodeURIComponent(`${generatedUrl}?custom=2#Deamon`)}`
-  } else if (isIOS()) {
+  } else if (d.mobile && d.ios) {
     return `streisand://import/${generatedUrl}?custom=2&amp;#Deamon`
   }
   return null
@@ -30,7 +31,7 @@ const url = computed(() => {
         <CardTitle class="text-2xl"> Deamon access </CardTitle>
       </CardHeader>
       <CardContent class="grid gap-4">
-        <Alert v-if="!isMobile()" variant="destructive">
+        <Alert v-if="!d.mobile" variant="destructive">
           <AlertCircle class="w-4 h-4" />
           <AlertTitle style="direction: rtl">توجه</AlertTitle>
           <AlertDescription class="text-right" style="direction: rtl">
