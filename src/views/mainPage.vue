@@ -16,7 +16,7 @@ const url = computed(() => {
   if (!route.query.url) return null
   const generatedUrl = (route.query.url as string).split('?')[0]
   if (d.mobile && d.android) {
-    return `v2rayng://install-sub?url=${encodeURIComponent(generatedUrl + '?custom=2#DeamonAccess')}&updateConfigViaSubAll=true`
+    return `v2rayng://install-sub?url=${encodeURIComponent(generatedUrl + '?custom=2#DeamonAccess')}&autoUpdate=true`
   } else if (d.mobile && d.ios) {
     return `streisand://import/${generatedUrl}?custom=2&amp;#DeamonAccess`
   }
